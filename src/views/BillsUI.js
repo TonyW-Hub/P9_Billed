@@ -5,6 +5,7 @@ import LoadingPage from "./LoadingPage.js"
 import Actions from './Actions.js'
 
 const row = (bill) => {
+  if (bill.type === null && bill.name === null && bill.amount === null) return;
   return (`
     <tr>
       <td>${bill.type}</td>
@@ -20,11 +21,14 @@ const row = (bill) => {
   }
 
 const rows = (data) => {
-  console.log(data);
   return (data && data.length) ? data.sort((billOne, billTwo) => billsSort(billOne.date, billTwo.date)).map(bill => row(bill)).join("") : ""
 }
 
 const billsSort = (billOne, billTwo) => {
+  // Compared billeOne with billTwo for sort bills
+  // If billOne < billTwo return -1
+  // ELse if billOne > billTwo return 1
+  // ELse return 0
   return billTwo ? -1 : billOne ? 1 : 0; 
 }
 
