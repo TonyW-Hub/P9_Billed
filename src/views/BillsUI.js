@@ -21,15 +21,13 @@ const row = (bill) => {
   }
 
 const rows = (data) => {
+  // Patch
   return (data && data.length) ? data.sort((billOne, billTwo) => billsSort(billOne.date, billTwo.date)).map(bill => row(bill)).join("") : ""
 }
 
+// Patch
 const billsSort = (billOne, billTwo) => {
-  // Compared billeOne with billTwo for sort bills
-  // If billOne < billTwo return -1
-  // ELse if billOne > billTwo return 1
-  // ELse return 0
-  return billTwo ? -1 : billOne ? 1 : 0; 
+  return billOne < billTwo ? 1 : -1
 }
 
 export default ({ data: bills, loading, error }) => {
