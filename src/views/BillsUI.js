@@ -6,7 +6,7 @@ import Actions from './Actions.js'
 
 const row = (bill) => {
   if (bill.type === null && bill.name === null && bill.amount === null) return;
-  return (`
+    return `
     <tr>
       <td>${bill.type}</td>
       <td>${bill.name}</td>
@@ -17,7 +17,7 @@ const row = (bill) => {
         ${Actions(bill.fileUrl)}
       </td>
     </tr>
-    `)
+    `;
   }
 
 const rows = (data) => {
@@ -27,7 +27,7 @@ const rows = (data) => {
 
 // Patch
 const billsSort = (billOne, billTwo) => {
-  return billOne < billTwo ? 1 : -1
+  return new Date(billOne) < new Date(billTwo) ? 1 : -1;
 }
 
 export default ({ data: bills, loading, error }) => {
